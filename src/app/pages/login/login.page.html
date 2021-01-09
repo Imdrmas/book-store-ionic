@@ -1,43 +1,44 @@
 <ion-header>
   <ion-toolbar color="danger">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-      <ion-title>Login</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button fill="outline" (click)="cancel()">
+        <ion-icon slot="start" name="star"></ion-icon>
+        Cancel
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card-header>
+    <ion-card-title>Authentication</ion-card-title>
+    <ion-card-subtitle>Please enter username and password</ion-card-subtitle>
+  </ion-card-header>
 
-    <ion-card-header>
-      <ion-card-title>Authentication</ion-card-title>
-      <ion-card-subtitle>Please enter username and password</ion-card-subtitle>
-    </ion-card-header>
+  <div style="font-size:  100px; text-align: center;">
+    <ion-icon name="person-circle-outline"></ion-icon>
+  </div>
+  <ion-card>
+    <ion-spinner name="bubbles" color="primary" class="center" *ngIf="progressBar"></ion-spinner>
 
-        <div style="font-size:  100px; text-align: center;">
-          <ion-icon name="person-circle-outline"></ion-icon>
-        </div>
-        <ion-card>
-          <ion-spinner name="bubbles" color="primary" class="center" *ngIf="progressBar"></ion-spinner>
+    <ion-card-content>
+      <form name="user" (ngSubmit)="onSubmit()" #formRegister="ngForm" novalidate>
 
-          <ion-card-content>
-            <form name="user" (ngSubmit)="onSubmit()" #formRegister="ngForm" novalidate>
-      
-              <ion-item>
-                <ion-input type="text" id="username" placeholder="Enter username" name="username" [(ngModel)]="user.username"
-                  #username="ngModel" required></ion-input>
-             </ion-item>
-      
-              <ion-item>
-                <ion-input type="password" id="password" placeholder="Enter password" name="password"
-                  [(ngModel)]="user.password" #password="ngModel" required></ion-input>
-              </ion-item>
-      
-              <br>
-              <ion-button type="submit" color="dark" fill="solid" size="large" expand="block"
-                [disabled]="username.invalid || password.invalid">Login</ion-button>
-            </form>
-      
-         </ion-card-content>
-        </ion-card>
-      </ion-content>
+        <ion-item>
+          <ion-input type="text" placeholder="Enter username" name="username" [(ngModel)]="user.username"
+            #username="ngModel" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" placeholder="Enter password" name="password" [(ngModel)]="user.password"
+            #password="ngModel" required></ion-input>
+        </ion-item>
+
+        <br>
+        <ion-button type="submit" color="dark" fill="solid" size="large" expand="block"
+          [disabled]="username.invalid || password.invalid">Login</ion-button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

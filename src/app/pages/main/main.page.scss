@@ -1,0 +1,45 @@
+.category-block {
+    margin-bottom: 4px;
+  }
+  .category-banner {
+    border-left: 10px solid #b71540;
+    background: var(--ion-color-light);
+    height: 40px;
+    padding: 10px;
+    font-weight: 500;
+  }
+#errorMessage {
+color: #c80c0c;
+background: antiquewhite;
+padding: 10px 25px;
+font-weight: bold;
+}
+#row {
+    background-color: #f8c291;
+}
+#row ion-icon {
+    cursor: pointer;
+}
+#add-icon {
+    font-size: 28px; 
+    cursor: pointer; 
+    margin-top: -6px;
+}
+#addBookBtn {
+    text-align: center;
+}
+#img {
+    height: 320px;
+    max-height: 1320px;
+   cursor: pointer;
+}
+h1 {
+    text-align: center; 
+    font-weight: bold;
+}
+h2 {
+    margin-left: 20px;
+}
+ion-toolbar {
+    cursor: pointer;
+}

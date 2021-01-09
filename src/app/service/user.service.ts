@@ -14,19 +14,19 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   addUser(user: User): Observable<User> {
-     return  this.http.post<User>(`${this.url}/addUser`, user);
+     return this.http.post<User>(`${this.url}/addUser`, user);
   }
 
   editUser(user: User, idUser: number): Observable<User> {
-     return  this.http.put<User>(`${this.url}/editUser/${idUser}`, user);
+     return this.http.put<User>(`${this.url}/editUser/${idUser}`, user);
   }
 
   deleteUser(idUser: number): Observable<User> {
-     return  this.http.delete<User>(`${this.url}/deleteUser/${idUser}`);
+     return this.http.delete<User>(`${this.url}/deleteUser/${idUser}`);
   }
 
   findByUsername(username: string): Observable<User> {
-     return  this.http.get<User>(`${this.url}/findByUsername/${username}`);
+     return this.http.get<User>(`${this.url}/findByUsername/${username}`);
   }
 
   public saveUsername(username: string) {

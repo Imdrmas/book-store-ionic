@@ -4,9 +4,85 @@
       <ion-menu-button></ion-menu-button>
       <ion-title>Main</ion-title>
     </ion-buttons>
+    <ion-buttons slot="end" *ngIf="showBtnAdd" (click)="addCategory(user.id)">
+      <ion-button>
+        Add category
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-home
+  <ion-button color="warning" expand="block" size="small" (click)="login()" *ngIf="!user">Please login</ion-button>
+  <ion-text color="danger" *ngIf="user">
+    <h1>Welcome {{user.username}}</h1>
+  </ion-text>
+  <ion-item-divider></ion-item-divider>
+
+  <ion-text color="dark">
+    <h2> Categories </h2>
+  </ion-text>
+  <div *ngFor="let cat of categories; let i = index" class="category-block">
+    <ion-row no-padding class="category-banner" id="row">
+      <ion-col size="8" text-left button (click)="toggle(cat, cat.id, i)" align-self-center>
+        <label style="cursor: pointer;">{{cat.name}}</label>
+      </ion-col>
+      <ion-col size="2" (click)="deleteCategory(cat.id)" *ngIf="showBtnAdd">
+        <ion-icon name="close-outline" color="danger"></ion-icon>
+      </ion-col>
+      <ion-col size="2" (click)="editCategory(cat.id)" *ngIf="showBtnAdd">
+        <ion-icon name="create-outline" color="primary"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-slides>
+      <ion-slide *ngFor="let book of books">
+
+        <div *ngIf="showIndex ===i && cat.expanded" [attr.id]="'undoBtn'+i">
+          <ion-card>
+            <ion-card-content>
+              <img src="{{book.photo}}" id="img" (click)="bookDetails(book.id)">
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-button size="small" fill="outline" color="danger">
+                      Price = {{book.price}} $
+                    </ion-button>
+                  </ion-col>
+                  <ion-col *ngIf="showBtnAdd">
+                    <ion-button size="small" fill="outline" color="success" (click)="editBook(book.id, cat.id)">
+                      Edit
+                    </ion-button>
+                  </ion-col>
+                  <ion-col *ngIf="showBtnAdd">
+                    <ion-button size="small" fill="outline" (clcik)="deleteBook(book.id)" color="warning">
+                      Delete
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+      </ion-slide>
+    </ion-slides>
+
+    <div id="addBookBtn">
+      <p id="errorMessage" *ngIf="showIndex ===i && cat.expanded && categoryLength == 0">No book in this category</p>
+      <ion-button *ngIf="showIndex ===i && cat.expanded && showBtnAdd" color="primary" shape="round" fill="outline"
+        size="small" (click)="addBook(cat.id)">Add book to
+        {{cat.name}}
+      </ion-button>
+    </div>
+  </div>
+
 </ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="user">
+  <ion-toolbar color="danger" (click)="logout(user.id)">
+    <ion-title>Logout</ion-title>
+  </ion-toolbar>
+</ion-footer>

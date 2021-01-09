@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="secondary">
+      <ion-button fill="outline" (click)="cancel()">
+        <ion-icon slot="start" name="star"></ion-icon>
+        Cancel
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card-header>
+    <ion-card-title>Add Book</ion-card-title>
+  </ion-card-header>
+
+  <ion-card>
+    <ion-spinner name="bubbles" color="primary" class="center" *ngIf="progressBar"></ion-spinner>
+
+    <ion-card-content>
+      <form name="user" (ngSubmit)="addBook()" #formRegister="ngForm" novalidate>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter name" name="name" [(ngModel)]="book.name" #name="ngModel" required>
+          </ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter writer" name="writer" [(ngModel)]="book.writer" #writer="ngModel"
+            required></ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter description" name="description" [(ngModel)]="book.description"
+            #description="ngModel" required></ion-input>
+        </ion-item> <br>
+
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter price" name="price" [(ngModel)]="book.price" #price="ngModel"
+            required></ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter publisher" name="publisher" [(ngModel)]="book.publisher"
+            #publisher="ngModel" required></ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter photo" name="photo" [(ngModel)]="book.photo" #photo="ngModel"
+            required></ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter size" name="size" [(ngModel)]="book.size" #size="ngModel" required>
+          </ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter page" name="page" [(ngModel)]="book.page" #page="ngModel" required>
+          </ion-input>
+        </ion-item> <br>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Enter langue" name="langue" [(ngModel)]="book.langue" #langue="ngModel" required>
+          </ion-input>
+        </ion-item> <br>
+
+        <ion-button type="submit" color="dark" fill="solid" size="large" expand="block"
+          [disabled]="name.invalid || writer.invalid || description.invalid || price.invalid || publisher.invalid || size.invalid || page.invalid || langue.invalid">
+          Login</ion-button>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

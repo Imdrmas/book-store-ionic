@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/modal/Modal';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,21 +16,27 @@ export class MenuPage implements OnInit {
       open: true
     },
     {
-      title: 'Cool Framework',
+      title: 'Cool shop books',
       open: true,
       children: [
         {
-          title: 'Login',
-          url: '/menu/login',
-          icon: 'logo-ionic'
+          title: 'Search book',
+          url: '/menu/search-book',
+          icon: 'search-circle-outline'
+        },
+        {
+          title: 'All books',
+          url: '/menu/find-all-books',
+          icon: 'book-outline'
         },
       ]
     }
   ];
-
+  
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -20,6 +20,6 @@ export interface Book {
     price: number,
     size: number,
     page: number,
-    publisher: any,
+    publisher: string,
     publishDate: any
 }

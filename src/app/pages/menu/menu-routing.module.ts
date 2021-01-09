@@ -16,8 +16,12 @@ const routes: Routes = [
       loadChildren: () => import('../main/main.module').then( m => m.MainPageModule)
     },
     {
-      path: 'login',
-      loadChildren: () => import('../login/login.module').then( m => m.LoginPageModule)
+      path: 'search-book',
+      loadChildren: () => import('../search-book/search-book.module').then( m => m.SearchBookPageModule)
+    },
+    {
+      path: 'find-all-books',
+      loadChildren: () => import('../find-all-books/find-all-books.module').then( m => m.FindAllBooksPageModule)
     },
   ]},
 ];
